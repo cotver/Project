@@ -250,7 +250,7 @@ header("Content-type: text/html; charset=UTF-8");
                 
                 <!-- Content -->
                 <div class="col-12 col-md-9 p-0">
-                    <iframe frameborder="0" allowtransparency="yes" marginheight="0" marginwidth="0" width="100%" id="iContent" scrolling="no" src="_index.php" style="height: 100vh;min-height: 100%;" onload="this.style.height=(this.contentWindow.document.body.scrollHeight+20)+'px';">></iframe>
+                    <iframe frameborder="0" allowtransparency="yes" marginheight="0" marginwidth="0" width="100%" id="iContent" scrolling="no" src="_index.php" style="min-height: 50vh;" onload="this.style.height=50+'vh';this.style.height=(this.contentWindow.document.body.scrollHeight)+'px';"></iframe>
                     <!-- <div class="card m-3"> 
                     
                         <div class="card-body  con-margin">

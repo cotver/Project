@@ -36,7 +36,7 @@ header("Content-type: text/html; charset=UTF-8");
     <div id="app">
                 <!-- Content -->
                 <div class="col-12">
-                    <div class="card"> 
+                    <div class="card reg-card-min-height"> 
                         <div class="card-body  con-margin">
                             <div class="card-new-header bg-red font-weight-bolder h5">  
                                 <img src="new_index_assets/img/logo/main.png" alt="" class="reg-height-title-kmitl-very-small">

@@ -47,7 +47,7 @@ var app = new Vue({
         
         CurriculumMenu: [
             { textTH: "หลักสูตรของสถาบันฯ", textEN: 'nstitute Rules and Regulations', url: "javascript:void(0);", target: "getiContent('_index.php')" },
-            { textTH: "ดาวน์โหลดแบบฟอร์ม(ภาษาไทย)", textEN: 'Download Form (Thai)', url: "javascript:void(0);", target: "getiContent('_index2.php')" },
+            { textTH: "ดาวน์โหลดแบบฟอร์ม(ภาษาไทย)", textEN: 'Download Form (Thai)', url: "../KMITL/", target: "_blank" },
         ]
 
     },
