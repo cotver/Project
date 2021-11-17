@@ -36,11 +36,10 @@
 
 .card-doc-head {
     display: block;
-    border-width: 8px 0 0 0;
+    border-width: 0 0 3px 0;
     border-style: solid;
     border-color: #F89248;
-    border-radius: 20%;
-    margin-top: 10px;
+    margin-left: 10px;
 }
 
 .card-doc {
@@ -57,10 +56,63 @@
     margin: 20px;
 }
 
+.con-center{
+  text-align: center;
+}
+
 .d-button  {
     margin-left: 20px;
     margin-bottom: 20px;
     background-color: #F2461A;
     color: #FFF;
     border-radius: 5px;
+}
+
+.cur-head {
+    color: #FFF !important;
+    display:flex;
+    padding: 10px 10px 10px 5px;
+    border-radius: 20px;
+    text-decoration: none;
+}
+i.cur-head {
+    line-height: inherit !important;
+    text-decoration: none;
+}
+  
+.cur-head:hover {
+    color: #FFF !important;
+    filter: brightness(95%);
+    box-shadow: 2px 2px gray;
+    text-decoration: none;
+}
+.dropdown_menu{
+  top: 100%;
+  left: 0;
+  width: 100%;
+  perspective: 1000px;
+  display: flex;
+  flex-direction: column;
+}
+
+.dropdown_menu-6{
+  animation: rotateMenu 300ms ease-in-out forwards;
+  transform-origin: top center;
+}
+@keyframes rotateMenu {
+    0% {
+      transform: rotateX(-90deg)
+    }
+    70% {
+      transform: rotateX(20deg)
+    }
+    100% {
+      transform: rotateX(0deg)
+    }
+  }
+.dropdown_item{
+    display: block;
+    margin-left: 10px;
+    padding: 5px;
+    color: #000;
 }

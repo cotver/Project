@@ -28,7 +28,7 @@ header("Content-type: text/html; charset=UTF-8");
     <link rel="stylesheet" href="new_index_assets/font/icofont/icofont.min.css">
     <meta name="description" content="ระบบสารสนเทศ สำนักทะเบียนและประมวลผล สถาบันเทคโนโลยีพระจอมเกล้าคุณทหารลาดกระบัง
     - Information System, Office of the Registrar, King Mongkut's Institute of Technology Ladkrabang">
-    <title>Office of the Registrar KMITL</title>
+    <title>สำนักทะเบียนและประมวลผล สถาบันเทคโนโลยีพระจอมเกล้าคุณทหารลาดกระบัง</title>
 </head>
 
 <body>
@@ -47,17 +47,22 @@ header("Content-type: text/html; charset=UTF-8");
                     </div>
                     <div>
                         <a href="#">
-                            <button class="btn btn-sm btn-outline-light" style="position: relative; top: -5px;" id="toggler-login" type="button" data-toggle="collapse" data-target="#navbarToggleLogin" v-show="!isLoggedIn">
+                            <button class="btn btn-sm btn-outline-light" style="position: relative; top: -5px;"
+                                id="toggler-login" type="button" data-toggle="collapse" data-target="#navbarToggleLogin"
+                                v-show="!isLoggedIn">
                                 <i class="icofont-login"></i> {{ t('Login', 'เข้าสู่ระบบ') }}
                             </button>
                         </a>
                         <a href="#">
-                            <button class="btn btn-sm btn-outline-light" style="position: relative; top: -5px;" id="toggler-user" type="button" data-toggle="collapse" data-target="#navbarToggleUser" v-show="isLoggedIn">
+                            <button class="btn btn-sm btn-outline-light" style="position: relative; top: -5px;"
+                                id="toggler-user" type="button" data-toggle="collapse" data-target="#navbarToggleUser"
+                                v-show="isLoggedIn">
                                 <i class="icofont-ui-user"></i> {{user_name}} <i class="icofont-caret-down"></i>
                             </button>
                         </a>
                         <a href="#">
-                            <button class="navbar-toggler" id="toggler-menu" type="button" data-toggle="collapse" data-target="#navbarToggleMenu">
+                            <button class="navbar-toggler" id="toggler-menu" type="button" data-toggle="collapse"
+                                data-target="#navbarToggleMenu">
                                 <i class="icofont-navigation-menu reg-text-menulist"></i>
                             </button>
                         </a>
@@ -95,7 +100,8 @@ header("Content-type: text/html; charset=UTF-8");
                         </a> -->
 
                         <div class="dropdown d-inline-block">
-                            <span class="btn btn-outline-light h6 mt-2" id="test" data-toggle="dropdown" v-show="!isLoggedIn">
+                            <span class="btn btn-outline-light h6 mt-2" id="test" data-toggle="dropdown"
+                                v-show="!isLoggedIn">
                                 <i class="icofont-login"></i> {{ t('Login', 'เข้าสู่ระบบ') }}
                             </span>
 
@@ -110,14 +116,16 @@ header("Content-type: text/html; charset=UTF-8");
                         </div>
 
                         <div class="dropdown d-inline-block">
-                            <span class="btn btn-primary h6 mt-2" id="dropdownMenuButtonLoggedIn" data-toggle="dropdown" v-show="isLoggedIn">
+                            <span class="btn btn-primary h6 mt-2" id="dropdownMenuButtonLoggedIn" data-toggle="dropdown"
+                                v-show="isLoggedIn">
                                 <i class="icofont-ui-user"></i> {{user_name}} <i class="icofont-caret-down"></i>
                             </span>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButtonLoggedIn">
                                 <a href="https://new.reg.kmitl.ac.th/reg/" target="_blank" class="dropdown-item">
                                     {{ t('Direct to Registration system (Bachelor)', 'เข้าสู่ระบบลงทะเบียน (ระดับปริญญาตรี)') }}
                                 </a>
-                                <a v-for="item in userMenu" v-show="isLoggedIn" class="dropdown-item" v-bind:href="item.path">
+                                <a v-for="item in userMenu" v-show="isLoggedIn" class="dropdown-item"
+                                    v-bind:href="item.path">
                                     {{ t(item.textEN, item.textTH) }}
                                 </a>
                                 <a href="../user/logout.php" class="dropdown-item text-danger">
@@ -129,7 +137,7 @@ header("Content-type: text/html; charset=UTF-8");
                 </div>
             </div>
             <!-- ---------------------------------------------------------- -->
-            
+
             <!-- Subtitle -->
             <div class="reg-nav text-white reg-title-kmitl d-block pt-1 pb-0">
                 <div class="row">
@@ -208,7 +216,8 @@ header("Content-type: text/html; charset=UTF-8");
             <div class="d-none d-sm-block">
                 <div class="d-xs-none d-block pt-3">
                     <span v-for="item in navButtonsAll">
-                        <a v-bind:href="item.url" id="item.textEN+'_menu_bar'" :data-toggle="item.children ? 'dropdown' : ''" v-bind:target="item.target">
+                        <a v-bind:href="item.url" id="item.textEN+'_menu_bar'"
+                            :data-toggle="item.children ? 'dropdown' : ''" v-bind:target="item.target">
                             <div class="btn reg-nav-button pl-2 pr-2 pt-2 pb-2 mb-1">
                                 <i class="icofont-caret-right text-primary" v-show="!item.children"></i>
                                 <i class="icofont-caret-down text-primary" v-show="item.children"></i>
@@ -216,27 +225,29 @@ header("Content-type: text/html; charset=UTF-8");
                             </div>
                         </a>
                         <div class="dropdown-menu" aria-labelledby="item.textEN+'_menu_bar'" v-if="item.children">
-                            <a v-for="item2 in item.children" v-bind:href="item2.url" class="dropdown-item" v-bind:target="item2.target">
+                            <a v-for="item2 in item.children" v-bind:href="item2.url" class="dropdown-item"
+                                v-bind:target="item2.target">
                                 {{ t(item2.textEN, item2.textTH) }}
                             </a>
                         </div>
                     </span>
                 </div>
             </div>
-            
+
             <!-- Center -->
             <div class="row reg-banner-margin">
-            
+
                 <!-- Left Nav -->
                 <div class="col-12 col-md-3 p-0 pt-3">
                     <div class="card m-3">
-                        <div class="card-header text-dark bg-white font-weight-bolder bg-line-3 h4 side-df">  
+                        <div class="card-header text-dark bg-white font-weight-bolder bg-line-3 h4 side-df">
                             <i class="icofont-caret-down text-primary side-icon"></i>
                             <span class="side-text">{{ t('Curriculum', 'หลักสูตรสถาบันฯ') }}</span>
                         </div>
                         <div class="card-body">
                             <div v-for="item in CurriculumMenu" class="btn-tran">
-                                <a v-bind:href="item.url" class="btn btn-tran text-left mb-2 side-df" v-bind:onclick="item.target">
+                                <a v-bind:href="item.url" class="btn btn-tran text-left mb-2 side-df"
+                                    v-bind:onclick="item.target">
                                     <i class="icofont-caret-right text-primary"></i>
                                     <span class="side-text">{{ t(item.textEN, item.textTH) }}</span>
                                 </a>
@@ -247,10 +258,12 @@ header("Content-type: text/html; charset=UTF-8");
                 </div>
 
                 <!-- ---------------------------------------------------------- -->
-                
+
                 <!-- Content -->
                 <div class="col-12 col-md-9 p-0">
-                    <iframe frameborder="0" allowtransparency="yes" marginheight="0" marginwidth="0" width="100%" id="iContent" scrolling="no" src="_index.php" style="min-height: 50vh;" onload="this.style.height=50+'vh';this.style.height=(this.contentWindow.document.body.scrollHeight)+'px';">></iframe>
+                    <iframe frameborder="0" allowtransparency="yes" marginheight="0" marginwidth="0" width="100%"
+                        id="iContent" scrolling="no" src="_index.php" style="min-height: 50vh;"
+                        onload="this.style.height=50+'vh';this.style.height=(this.contentWindow.document.body.scrollHeight)+'px';">></iframe>
                 </div>
             </div>
             <!-- ---------------------------------------------------------- -->
@@ -275,11 +288,13 @@ header("Content-type: text/html; charset=UTF-8");
                             <span class="h4"><i class="icofont-facebook"></i></span>
                             {{ t('Reg.KMITL', 'สำนักทะเบียนฯ') }}
                         </a>
-                        <a href="http://www.facebook.com/Admission.KMITL" target="blank" class="btn btn-outline-light mb-3">
+                        <a href="http://www.facebook.com/Admission.KMITL" target="blank"
+                            class="btn btn-outline-light mb-3">
                             <span class="h4"><i class="icofont-facebook"></i></span>
                             {{ t('Admission.KMITL', 'การศึกษาต่อ') }}
                         </a>
-                        <a href="http://council.kmitl.ac.th/council2018/request/" target="blank" class="btn btn-outline-light mb-3">
+                        <a href="http://council.kmitl.ac.th/council2018/request/" target="blank"
+                            class="btn btn-outline-light mb-3">
                             <span class="h4"><i class="icofont-exclamation-square"></i></span>
                             {{ t('Corruption Complain', 'ร้องเรียนทุจริต') }}
                         </a>
@@ -295,7 +310,8 @@ header("Content-type: text/html; charset=UTF-8");
                         King Mongkut's Institute of Technology Ladkrabang<br>
                         All Rights Reserved.<br>
                         {{ t('Admin', 'ผู้ดูแลระบบ') }} : registrar@kmitl.ac.th<br>
-                        <a href="../office/personnel.php?dept_id=10" target="blank">{{ t('Developer : Click here','ผู้พัฒนา : คลิกที่นี่') }}</a><br>
+                        <a href="../office/personnel.php?dept_id=10"
+                            target="blank">{{ t('Developer : Click here','ผู้พัฒนา : คลิกที่นี่') }}</a><br>
                         <!-- Last modified: <br> -->
                     </div>
                 </div>
@@ -328,44 +344,44 @@ header("Content-type: text/html; charset=UTF-8");
 
     <script src="new_index_assets/js/index.js?v=1.7"></script>
     <script>
-        $(document).ready(function() {
-            // $('#modal').modal('show');
-            //----------------------------------
+    $(document).ready(function() {
+        // $('#modal').modal('show');
+        //----------------------------------
 
-            $(document).click(function(event) {
-                var clickover = $(event.target);
-                var _opened_menu = $("#navbarToggleMenu").hasClass("collapse show");
-                if (_opened_menu === true && !clickover.hasClass("toggler-menu") &&
-                    !clickover.parents().hasClass("collapse") &&
-                    !clickover.parents().hasClass("btn-group-toggle")) {
-                    $("#toggler-menu").click();
-                }
+        $(document).click(function(event) {
+            var clickover = $(event.target);
+            var _opened_menu = $("#navbarToggleMenu").hasClass("collapse show");
+            if (_opened_menu === true && !clickover.hasClass("toggler-menu") &&
+                !clickover.parents().hasClass("collapse") &&
+                !clickover.parents().hasClass("btn-group-toggle")) {
+                $("#toggler-menu").click();
+            }
 
-                var _opened_login = $("#navbarToggleLogin").hasClass("collapse show");
-                if (_opened_login === true && !clickover.hasClass("toggler-login") &&
-                    !clickover.parents().hasClass("collapse") &&
-                    !clickover.parents().hasClass("btn-group-toggle")) {
-                    $("#toggler-login").click();
-                }
+            var _opened_login = $("#navbarToggleLogin").hasClass("collapse show");
+            if (_opened_login === true && !clickover.hasClass("toggler-login") &&
+                !clickover.parents().hasClass("collapse") &&
+                !clickover.parents().hasClass("btn-group-toggle")) {
+                $("#toggler-login").click();
+            }
 
-                var _opened_user = $("#navbarToggleUser").hasClass("collapse show");
-                if (_opened_user === true && !clickover.hasClass("toggler-user") &&
-                    !clickover.parents().hasClass("collapse") &&
-                    !clickover.parents().hasClass("btn-group-toggle")) {
-                    $("#toggler-user").click();
-                }
-            });
+            var _opened_user = $("#navbarToggleUser").hasClass("collapse show");
+            if (_opened_user === true && !clickover.hasClass("toggler-user") &&
+                !clickover.parents().hasClass("collapse") &&
+                !clickover.parents().hasClass("btn-group-toggle")) {
+                $("#toggler-user").click();
+            }
         });
+    });
     </script>
     <script type="text/javascript">
-        $(function(){
-	        $('#M5').css('background-image','url(../index/images/htopmenu3_10.jpg)');
-	        $('#M5').prop('href', 'javascript:void(0)');
-        });
-        function getiContent(page)
-        {
-	        $('#iContent').prop('src', page);
-        }
+    $(function() {
+        $('#M5').css('background-image', 'url(../index/images/htopmenu3_10.jpg)');
+        $('#M5').prop('href', 'javascript:void(0)');
+    });
+
+    function getiContent(page) {
+        $('#iContent').prop('src', page);
+    }
     </script>
 </body>
 

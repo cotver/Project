@@ -16,6 +16,10 @@
  display: flex;
 }
 
+.side-db {
+  display: block;
+ }
+
 .side-icon {
     justify-content: flex-start;
     
@@ -56,6 +60,10 @@
     margin: 20px;
 }
 
+.con-center{
+  text-align: center;
+}
+
 .d-button  {
     margin-left: 20px;
     margin-bottom: 20px;
@@ -82,8 +90,10 @@ i.cur-head {
     box-shadow: 2px 2px gray;
     text-decoration: none;
 }
+i{
+  margin-top: 5px;
+}
 .dropdown_menu{
-
   top: 100%;
   left: 0;
   width: 100%;
@@ -108,8 +118,8 @@ i.cur-head {
     }
   }
 .dropdown_item{
-    display: block;
-    margin-left: 10px;
+    display: flex;
     padding: 5px;
     color: #000;
+    flex-direction: row;
 }

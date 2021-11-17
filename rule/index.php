@@ -28,7 +28,7 @@ header("Content-type: text/html; charset=UTF-8");
     <link rel="stylesheet" href="new_index_assets/font/icofont/icofont.min.css">
     <meta name="description" content="ระบบสารสนเทศ สำนักทะเบียนและประมวลผล สถาบันเทคโนโลยีพระจอมเกล้าคุณทหารลาดกระบัง
     - Information System, Office of the Registrar, King Mongkut's Institute of Technology Ladkrabang">
-    <title>Office of the Registrar KMITL</title>
+    <title>สำนักทะเบียนและประมวลผล  สถาบันเทคโนโลยีพระจอมเกล้าคุณทหารลาดกระบัง</title>
 </head>
 
 <body>
