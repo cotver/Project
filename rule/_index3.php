@@ -41,24 +41,25 @@ header("Content-type: text/html; charset=UTF-8");
                         <img src="new_index_assets/img/logo/main.png" alt="" class="reg-height-title-kmitl-very-small">
                         ดาวโหลดแบบฟอร์ม เอกสารต่างๆ
                     </div>
-                    <div class="pl-2 pt-2 mr-2 pb-2 mb-1">
-                        <div class="card-header text-dark bg-white font-weight-bolder h5 card-doc-head">
-                            ระดับปริญญาตรี | Undergraduate Documents
+                    <div v-for="item in DocEng">
+                        <div class="pl-2 pt-2 mr-2 pb-2 mb-1">
+                            <div class="card-header text-dark bg-white font-weight-bolder h5 card-doc-head">
+                                {{ t(item.textEN, item.textTH) }}
+                            </div>
+                            <hr class="m-0">
                         </div>
-                        <hr class="m-0">
-                    </div>
-                    <div v-for="item in DocumentsMenu" class="btn-tran ml-2 ">
-                        <a v-bind:href="item.url" class="btn btn-tran text-left mb-2 side-df" target="blank">
-                            <i class="icofont-caret-right text-primary"></i>
-                            <span class="side-text">{{ t(item.textEN, item.textTH) }}</span>
-                            <a href="http://www1.reg.kmitl.ac.th/filecontainer/files/A622021.pdf" title="ดาวน์โหลด"
-                                target="_blank">
-                                <button class="d-button">Download</button>
+                        <div v-for="item2 in item.Doc" class="btn-tran ml-2 ">
+                            <a v-bind:href="item2.url" class="btn btn-tran text-left mb-2 side-df" target="blank">
+                                <i class="icofont-caret-right text-primary"></i>
+                                <span class="side-text">{{ t(item2.textEN, item2.textTH) }}</span>
+                                <a v-bind:href="item2.url" title="ดาวน์โหลด"
+                                    target="_blank">
+                                    <button class="d-button">Download</button>
+                                </a>
                             </a>
-                        </a>
-                        <hr class="m-0">
+                            <hr class="m-0">
+                        </div>
                     </div>
-
                 </div>
             </div>
         </div>

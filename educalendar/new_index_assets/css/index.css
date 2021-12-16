@@ -1,0 +1,15 @@
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background: #ff804b;
+  background-image: url(../img/bigbgad3.jpg), linear-gradient(340deg, #a65431 0%, #9f3744 47%, #985a40 100%);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url(../img/bigbgad3.jpg);
+  background-blend-mode: lighten;
+}
+/*# sourceMappingURL=index.css.map */

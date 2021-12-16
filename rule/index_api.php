@@ -5,7 +5,7 @@ header('Content-Type: application/json; charset=UTF-8');
 session_start();
 
 # route
-if ($REQUEST_METHOD == 'GET') {
+if (REQUEST_METHOD == 'GET') {
     switch ($_REQUEST['function']) {
         case 'get-info':
             $response = getInfo();

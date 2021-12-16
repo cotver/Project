@@ -236,7 +236,7 @@ header("Content-type: text/html; charset=UTF-8");
                         </div>
                         <div class="card-body">
                             <div v-for="item in DocumentsMenu" class="btn-tran">
-                                <a v-bind:href="item.url" class="btn btn-tran text-left mb-2 side-df" v-bind:onclick="item.target">
+                                <a v-bind:href="item.url" class="btn btn-tran text-left mb-2 side-df" v-on:click="getiContent($event, item.target)">
                                     <i class="icofont-caret-right text-primary"></i>
                                     <span class="side-text">{{ t(item.textEN, item.textTH) }}</span>
                                 </a>
@@ -250,7 +250,7 @@ header("Content-type: text/html; charset=UTF-8");
                 
                 <!-- Content -->
                 <div class="col-12 col-md-9 p-0">
-                    <iframe frameborder="0" allowtransparency="yes" marginheight="0" marginwidth="0" width="100%" id="iContent" scrolling="no" src="_index.php" style="min-height: 50vh;" onload="this.style.height=50+'vh';this.style.height=(this.contentWindow.document.body.scrollHeight)+'px';"></iframe>
+                    <iframe frameborder="0" allowtransparency="yes" marginheight="0" marginwidth="0" width="100%" id="iContent" scrolling="no" src="_index2.php" style="min-height: 50vh;" onload="this.style.height=50+'vh';this.style.height=(this.contentWindow.document.body.scrollHeight)+'px';"></iframe>
                     <!-- <div class="card m-3"> 
                     
                         <div class="card-body  con-margin">
@@ -389,10 +389,7 @@ header("Content-type: text/html; charset=UTF-8");
 	        $('#M5').css('background-image','url(../index/images/htopmenu3_10.jpg)');
 	        $('#M5').prop('href', 'javascript:void(0)');
         });
-        function getiContent(page)
-        {
-	        $('#iContent').prop('src', page);
-        }
+        
     </script>
 </body>
 
