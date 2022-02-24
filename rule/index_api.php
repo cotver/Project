@@ -1,5 +1,5 @@
 <?php
-
+require_once('../user/core.php');
 
 header('Content-Type: application/json; charset=UTF-8');
 session_start();
