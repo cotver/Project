@@ -54,7 +54,7 @@ header("Content-type: text/html; charset=UTF-8");
                                 <span class="side-text">{{ t(item2.textEN, item2.textTH) }}</span>
                                 <a v-bind:href="item2.url" title="ดาวน์โหลด"
                                     target="_blank">
-                                    <button class="d-button">Download</button>
+                                    <button class="d-button btn">Download</button>
                                 </a>
                             </a>
                             <hr class="m-0">

@@ -192,6 +192,11 @@ header("Content-type: text/html; charset=UTF-8");
                             </div>
                         </a>
                     </div>
+                    <a href="../index" id="'_menu_bar'">
+                        <div class="reg-menu-small">
+                            <i class="icofont-home"></i>
+                        </div>
+                    </a>
                 </div>
             </div>
             <!-- ---------------------------------------------------------- -->
@@ -208,19 +213,26 @@ header("Content-type: text/html; charset=UTF-8");
             <div class="d-none d-sm-block">
                 <div class="d-xs-none d-block pt-3">
                     <span v-for="item in navButtonsAll">
-                        <a v-bind:href="item.url" id="item.textEN+'_menu_bar'" :data-toggle="item.children ? 'dropdown' : ''" v-bind:target="item.target">
-                            <div class="btn reg-nav-button pl-2 pr-2 pt-2 pb-2 mb-1">
+                        <a v-bind:href="item.url" id="item.textEN+'_menu_bar'"
+                            :data-toggle="item.children ? 'dropdown' : ''" v-bind:target="item.target">
+                            <div class="btn reg-nav-button pl-2 pr-2 pt-2 pb-2 mb-1"  style="border:0px transparent;">
                                 <i class="icofont-caret-right text-primary" v-show="!item.children"></i>
                                 <i class="icofont-caret-down text-primary" v-show="item.children"></i>
                                 {{ t(item.textEN, item.textTH) }}
                             </div>
                         </a>
                         <div class="dropdown-menu" aria-labelledby="item.textEN+'_menu_bar'" v-if="item.children">
-                            <a v-for="item2 in item.children" v-bind:href="item2.url" class="dropdown-item" v-bind:target="item2.target">
+                            <a v-for="item2 in item.children" v-bind:href="item2.url" class="dropdown-item"
+                                v-bind:target="item2.target">
                                 {{ t(item2.textEN, item2.textTH) }}
                             </a>
                         </div>
                     </span>
+                    <a href="../index" id="'_menu_bar'">
+                        <div class="btn reg-nav-button"  style="border:0px transparent;">
+                            <i class="icofont-home"></i>
+                        </div>
+                    </a>
                 </div>
             </div>
             <!-- Content -->

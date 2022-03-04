@@ -38,7 +38,7 @@ var app = new Vue({
                     { textTH: "ข้อตกลงระดับการให้บริการ (SLA)", textEN: 'ข้อตกลงระดับการให้บริการ (SLA)', url: "../SLA/", target: "_blank" },
                 ]
             },
-            { textTH: "เว็บบอร์ด", textEN: 'Webboard', url: "webboard.php?group=1" },
+            { textTH: "เว็บบอร์ด", textEN: 'Webboard', url: "../index/webboard.php?group=1" },
             { textTH: "ทุนการศึกษา", textEN: 'Scholarship', url: "https://office.kmitl.ac.th/osda/kmitl/" },
             { textTH: "เกี่ยวกับสำนัก", textEN: 'About', url: "../office/" },
         ],
@@ -95,6 +95,7 @@ var app = new Vue({
             axios.post('index_api.php?function=set-language&lang=' + lang)
                 .then(function (response) {
                     this.language = lang;
+                    document.getElementById('iContent').contentWindow.location.reload();
                 })
                 .catch(function (error) {
                     alert(JSON.stringify(error.response.data.message))

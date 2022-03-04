@@ -60,7 +60,6 @@ var app = new Vue({
             axios.post('index_api.php?function=set-language&lang=' + lang)
                 .then(function (response) {
                     this.language = lang;
-                    console.log(this.language);
                 })
                 .catch(function (error) {
                     alert(JSON.stringify(error.response.data.message))

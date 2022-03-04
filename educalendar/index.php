@@ -200,6 +200,11 @@ header("Content-type: text/html; charset=UTF-8");
                             </div>
                         </a>
                     </div>
+                    <a href="../index" id="'_menu_bar'">
+                        <div class="reg-menu-small">
+                            <i class="icofont-home"></i>
+                        </div>
+                    </a>
                 </div>
             </div>
             <!-- ---------------------------------------------------------- -->
@@ -218,7 +223,7 @@ header("Content-type: text/html; charset=UTF-8");
                     <span v-for="item in navButtonsAll">
                         <a v-bind:href="item.url" id="item.textEN+'_menu_bar'"
                             :data-toggle="item.children ? 'dropdown' : ''" v-bind:target="item.target">
-                            <div class="btn reg-nav-button pl-2 pr-2 pt-2 pb-2 mb-1">
+                            <div class="btn reg-nav-button pl-2 pr-2 pt-2 pb-2 mb-1"  style="border:0px transparent;">
                                 <i class="icofont-caret-right text-primary" v-show="!item.children"></i>
                                 <i class="icofont-caret-down text-primary" v-show="item.children"></i>
                                 {{ t(item.textEN, item.textTH) }}
@@ -231,9 +236,13 @@ header("Content-type: text/html; charset=UTF-8");
                             </a>
                         </div>
                     </span>
+                    <a href="../index" id="'_menu_bar'">
+                        <div class="btn reg-nav-button"  style="border:0px transparent;">
+                            <i class="icofont-home"></i>
+                        </div>
+                    </a>
                 </div>
             </div>
-
             <!-- Center -->
             <div class="row reg-banner-margin">
 

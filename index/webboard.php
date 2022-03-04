@@ -1,6 +1,6 @@
 <?php
 header("Content-type: text/html; charset=UTF-8");
-
+$group = $_GET['group'];
 # Server Test Announcement
 
 ?>
@@ -28,7 +28,7 @@ header("Content-type: text/html; charset=UTF-8");
     <link rel="stylesheet" href="new_index_assets/font/icofont/icofont.min.css">
     <meta name="description" content="ระบบสารสนเทศ สำนักทะเบียนและประมวลผล สถาบันเทคโนโลยีพระจอมเกล้าคุณทหารลาดกระบัง
     - Information System, Office of the Registrar, King Mongkut's Institute of Technology Ladkrabang">
-    <title>สำนักทะเบียนและประมวลผล  สถาบันเทคโนโลยีพระจอมเกล้าคุณทหารลาดกระบัง</title>
+    <title>สำนักทะเบียนและประมวลผล สถาบันเทคโนโลยีพระจอมเกล้าคุณทหารลาดกระบัง</title>
 </head>
 
 <body>
@@ -47,17 +47,22 @@ header("Content-type: text/html; charset=UTF-8");
                     </div>
                     <div>
                         <a href="#">
-                            <button class="btn btn-sm btn-outline-light" style="position: relative; top: -5px;" id="toggler-login" type="button" data-toggle="collapse" data-target="#navbarToggleLogin" v-show="!isLoggedIn">
+                            <button class="btn btn-sm btn-outline-light" style="position: relative; top: -5px;"
+                                id="toggler-login" type="button" data-toggle="collapse" data-target="#navbarToggleLogin"
+                                v-show="!isLoggedIn">
                                 <i class="icofont-login"></i> {{ t('Login', 'เข้าสู่ระบบ') }}
                             </button>
                         </a>
                         <a href="#">
-                            <button class="btn btn-sm btn-outline-light" style="position: relative; top: -5px;" id="toggler-user" type="button" data-toggle="collapse" data-target="#navbarToggleUser" v-show="isLoggedIn">
+                            <button class="btn btn-sm btn-outline-light" style="position: relative; top: -5px;"
+                                id="toggler-user" type="button" data-toggle="collapse" data-target="#navbarToggleUser"
+                                v-show="isLoggedIn">
                                 <i class="icofont-ui-user"></i> {{user_name}} <i class="icofont-caret-down"></i>
                             </button>
                         </a>
                         <a href="#">
-                            <button class="navbar-toggler" id="toggler-menu" type="button" data-toggle="collapse" data-target="#navbarToggleMenu">
+                            <button class="navbar-toggler" id="toggler-menu" type="button" data-toggle="collapse"
+                                data-target="#navbarToggleMenu">
                                 <i class="icofont-navigation-menu reg-text-menulist"></i>
                             </button>
                         </a>
@@ -95,7 +100,8 @@ header("Content-type: text/html; charset=UTF-8");
                         </a> -->
 
                         <div class="dropdown d-inline-block">
-                            <span class="btn btn-outline-light h6 mt-2" id="test" data-toggle="dropdown" v-show="!isLoggedIn">
+                            <span class="btn btn-outline-light h6 mt-2" id="test" data-toggle="dropdown"
+                                v-show="!isLoggedIn">
                                 <i class="icofont-login"></i> {{ t('Login', 'เข้าสู่ระบบ') }}
                             </span>
 
@@ -110,14 +116,16 @@ header("Content-type: text/html; charset=UTF-8");
                         </div>
 
                         <div class="dropdown d-inline-block">
-                            <span class="btn btn-primary h6 mt-2" id="dropdownMenuButtonLoggedIn" data-toggle="dropdown" v-show="isLoggedIn">
+                            <span class="btn btn-primary h6 mt-2" id="dropdownMenuButtonLoggedIn" data-toggle="dropdown"
+                                v-show="isLoggedIn">
                                 <i class="icofont-ui-user"></i> {{user_name}} <i class="icofont-caret-down"></i>
                             </span>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButtonLoggedIn">
                                 <a href="https://new.reg.kmitl.ac.th/reg/" target="_blank" class="dropdown-item">
                                     {{ t('Direct to Registration system (Bachelor)', 'เข้าสู่ระบบลงทะเบียน (ระดับปริญญาตรี)') }}
                                 </a>
-                                <a v-for="item in userMenu" v-show="isLoggedIn" class="dropdown-item" v-bind:href="item.path">
+                                <a v-for="item in userMenu" v-show="isLoggedIn" class="dropdown-item"
+                                    v-bind:href="item.path">
                                     {{ t(item.textEN, item.textTH) }}
                                 </a>
                                 <a href="../user/logout.php" class="dropdown-item text-danger">
@@ -129,7 +137,7 @@ header("Content-type: text/html; charset=UTF-8");
                 </div>
             </div>
             <!-- ---------------------------------------------------------- -->
-            
+
             <!-- Subtitle -->
             <div class="reg-nav text-white reg-title-kmitl d-block pt-1 pb-0">
                 <div class="row">
@@ -215,7 +223,7 @@ header("Content-type: text/html; charset=UTF-8");
                     <span v-for="item in navButtonsAll">
                         <a v-bind:href="item.url" id="item.textEN+'_menu_bar'"
                             :data-toggle="item.children ? 'dropdown' : ''" v-bind:target="item.target">
-                            <div class="btn reg-nav-button pl-2 pr-2 pt-2 pb-2 mb-1"  style="border:0px transparent;">
+                            <div class="btn reg-nav-button pl-2 pr-2 pt-2 pb-2 mb-1" style="border:0px transparent;">
                                 <i class="icofont-caret-right text-primary" v-show="!item.children"></i>
                                 <i class="icofont-caret-down text-primary" v-show="item.children"></i>
                                 {{ t(item.textEN, item.textTH) }}
@@ -229,85 +237,95 @@ header("Content-type: text/html; charset=UTF-8");
                         </div>
                     </span>
                     <a href="../index" id="'_menu_bar'">
-                        <div class="btn reg-nav-button"  style="border:0px transparent;">
+                        <div class="btn reg-nav-button" style="border:0px transparent; float: right;">
                             <i class="icofont-home"></i>
                         </div>
                     </a>
                 </div>
             </div>
+
+
             <!-- Content -->
-            <div class="row reg-banner-margin shadow-sm bg-white pb-3">
-                <div class="col-12 p-0">
-                    <div class="ml-5 mr-5 mb-5 side-df p-5 m-auto" style="flex-direction: column;">
-                    <div v-for="item in OIT15">
-                            <div class="pl-2 pt-2 mr-2 pb-2 mb-1">
-                                <div class="card-header text-dark bg-white font-weight-bolder h5 card-doc-head">
-                                    {{ t(item.textEN, item.textTH) }}
+            <div class="reg-page">
+                <div class="reg-card-min-height" style="min-height:1050px;">
+                    <div class="card-body con-margin">
+                        <div class="card w-75 m-auto"style="background:#f89248;" >
+                            <div class="font-weight-bolder h5 m-4" style="display:flex;margin:10px !important; ">
+
+                                <img src="new_index_assets/img/logo/main.png" alt=""
+                                    class="reg-height-title-kmitl-very-small ">
+                                <div class="card-doc-head">
+                                    {{ t('Webboard','เว็บบอร์ด') }}
                                 </div>
-                                <hr class="m-0">
-                            </div>
-                            <div v-for="item2 in item.Doc" class="btn-tran ml-2 ">
-                                <a v-bind:href="item2.url" class="btn btn-tran text-left mb-2 side-df" target="blank">
-                                    <i class="icofont-caret-right text-primary"></i>
-                                    <span class="side-text">{{ t(item2.textEN, item2.textTH) }}</span>
-                                    <a v-bind:href="item2.url" title="ดาวน์โหลด" target="_blank">
-                                        <button class="d-button">Download</button>
-                                    </a>
-                                </a>
-                                <hr class="m-0">
+                                <div class="h6"
+                                    style="margin-top: 5px; display:block; color:#FFF;margin-left:5px;font-weight: bolder !important;">
+                                    {{ t('','สำนักทะเบียนฯ') }}
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-            <!-- ------------------------------------------------ -->
-
-            <div class="text-light reg-footer-top bg-primary">
-
-            </div>
-            <div class="text-light reg-footer-bottom">
-                <div class="row">
-                    <div class="col-12 col-lg-6 pt-3">
-                        <h2>{{ t('Office of the Registrar', 'สำนักทะเบียนและประมวลผล') }}</h2>
-                        {{ t('King Mongkut’s Institute of Technology Ladkrabang', 'สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง') }}<br>
-                        {{ t('2nd floor, Krom Luang Naratiwas Rachanakarin Building', 'ชั้น 2 อาคารกรมหลวงนราธิวาสราชนครินทร์') }}<br>
-                        {{ t('1 Soi Chalong Krung 1', 'เลขที่ 1 ซอยฉลองกรุง 1') }}<br>
-                        {{ t('Ladkrabang Subdistrict, Ladkrabang District', 'แขวงลาดกระบัง เขตลาดกระบัง') }}<br>
-                    </div>
-
-                    <div class="col-12 col-lg-6 pt-3">
-                        <hr style="border-color: aliceblue;" class="d-lg-none">
-
-                        <a href="http://www.facebook.com/reg.kmitl" target="blank" class="btn btn-outline-light mb-3">
-                            <span class="h4"><i class="icofont-facebook"></i></span>
-                            {{ t('Reg.KMITL', 'สำนักทะเบียนฯ') }}
-                        </a>
-                        <a href="http://www.facebook.com/Admission.KMITL" target="blank" class="btn btn-outline-light mb-3">
-                            <span class="h4"><i class="icofont-facebook"></i></span>
-                            {{ t('Admission.KMITL', 'การศึกษาต่อ') }}
-                        </a>
-                        <a href="http://council.kmitl.ac.th/council2018/request/" target="blank" class="btn btn-outline-light mb-3">
-                            <span class="h4"><i class="icofont-exclamation-square"></i></span>
-                            {{ t('Corruption Complain', 'ร้องเรียนทุจริต') }}
-                        </a>
-
-                        <br>
-
-                        <a href="../information/contact.php" target="blank">
-                            {{ t('Contact us : Click here', 'ติดต่อสอบถาม : คลิกที่นี่') }}
-                            <i class="icofont-ui-call"></i>
-                            <i class="icofont-email"></i>
-                        </a>
-                        <br>
-                        King Mongkut's Institute of Technology Ladkrabang<br>
-                        All Rights Reserved.<br>
-                        {{ t('Admin', 'ผู้ดูแลระบบ') }} : registrar@kmitl.ac.th<br>
-                        <a href="../office/personnel.php?dept_id=10" target="blank">{{ t('Developer : Click here','ผู้พัฒนา : คลิกที่นี่') }}</a><br>
-                        <!-- Last modified: <br> -->
+                        <div v-for="item in postAll" class="card w-75 m-auto">
+                            <a v-bind:href='item.url' v-on:click="setHit(item.date)" class="card-body">
+                                <h5 class="card-title">{{ item.topic }}</h5>
+                                <i class="icofont-eye text-primary m-1" style="float: left;"> {{ item.views }} </i>
+                                <i class="icofont-comment text-primary m-1" style="float: left;"> {{ item.count }} </i>
+                                <i style="float: right;">วันที่ตอบล่าสุด {{ item.commentDate }}</i>
+                            </a>
+                        </div>
+                        
                     </div>
                 </div>
             </div>
         </div>
+        <!-- ---------------------------------------------------------- -->
+
+        <div class="text-light reg-footer-top bg-primary">
+
+        </div>
+        <div class="text-light reg-footer-bottom">
+            <div class="row">
+                <div class="col-12 col-lg-6 pt-3">
+                    <h2>{{ t('Office of the Registrar', 'สำนักทะเบียนและประมวลผล') }}</h2>
+                    {{ t('King Mongkut’s Institute of Technology Ladkrabang', 'สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง') }}<br>
+                    {{ t('2nd floor, Krom Luang Naratiwas Rachanakarin Building', 'ชั้น 2 อาคารกรมหลวงนราธิวาสราชนครินทร์') }}<br>
+                    {{ t('1 Soi Chalong Krung 1', 'เลขที่ 1 ซอยฉลองกรุง 1') }}<br>
+                    {{ t('Ladkrabang Subdistrict, Ladkrabang District', 'แขวงลาดกระบัง เขตลาดกระบัง') }}<br>
+                </div>
+
+                <div class="col-12 col-lg-6 pt-3">
+                    <hr style="border-color: aliceblue;" class="d-lg-none">
+
+                    <a href="http://www.facebook.com/reg.kmitl" target="blank" class="btn btn-outline-light mb-3">
+                        <span class="h4"><i class="icofont-facebook"></i></span>
+                        {{ t('Reg.KMITL', 'สำนักทะเบียนฯ') }}
+                    </a>
+                    <a href="http://www.facebook.com/Admission.KMITL" target="blank" class="btn btn-outline-light mb-3">
+                        <span class="h4"><i class="icofont-facebook"></i></span>
+                        {{ t('Admission.KMITL', 'การศึกษาต่อ') }}
+                    </a>
+                    <a href="http://council.kmitl.ac.th/council2018/request/" target="blank"
+                        class="btn btn-outline-light mb-3">
+                        <span class="h4"><i class="icofont-exclamation-square"></i></span>
+                        {{ t('Corruption Complain', 'ร้องเรียนทุจริต') }}
+                    </a>
+
+                    <br>
+
+                    <a href="../information/contact.php" target="blank">
+                        {{ t('Contact us : Click here', 'ติดต่อสอบถาม : คลิกที่นี่') }}
+                        <i class="icofont-ui-call"></i>
+                        <i class="icofont-email"></i>
+                    </a>
+                    <br>
+                    King Mongkut's Institute of Technology Ladkrabang<br>
+                    All Rights Reserved.<br>
+                    {{ t('Admin', 'ผู้ดูแลระบบ') }} : registrar@kmitl.ac.th<br>
+                    <a href="../office/personnel.php?dept_id=10"
+                        target="blank">{{ t('Developer : Click here','ผู้พัฒนา : คลิกที่นี่') }}</a><br>
+                    <!-- Last modified: <br> -->
+                </div>
+            </div>
+        </div>
+    </div>
     </div>
 
     <div class="modal fade" id="modal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
@@ -333,42 +351,46 @@ header("Content-type: text/html; charset=UTF-8");
 
 
 
-    <script src="new_index_assets/js/index.js?v=1.7"></script>
+    <script src="new_index_assets/js/webboard.js?v=1.7"></script>
     <script>
-        $(document).ready(function() {
-            // $('#modal').modal('show');
-            //----------------------------------
+    $(document).ready(function() {
+        // $('#modal').modal('show');
+        //----------------------------------
 
-            $(document).click(function(event) {
-                var clickover = $(event.target);
-                var _opened_menu = $("#navbarToggleMenu").hasClass("collapse show");
-                if (_opened_menu === true && !clickover.hasClass("toggler-menu") &&
-                    !clickover.parents().hasClass("collapse") &&
-                    !clickover.parents().hasClass("btn-group-toggle")) {
-                    $("#toggler-menu").click();
-                }
+        $(document).click(function(event) {
+            var clickover = $(event.target);
+            var _opened_menu = $("#navbarToggleMenu").hasClass("collapse show");
+            if (_opened_menu === true && !clickover.hasClass("toggler-menu") &&
+                !clickover.parents().hasClass("collapse") &&
+                !clickover.parents().hasClass("btn-group-toggle")) {
+                $("#toggler-menu").click();
+            }
 
-                var _opened_login = $("#navbarToggleLogin").hasClass("collapse show");
-                if (_opened_login === true && !clickover.hasClass("toggler-login") &&
-                    !clickover.parents().hasClass("collapse") &&
-                    !clickover.parents().hasClass("btn-group-toggle")) {
-                    $("#toggler-login").click();
-                }
+            var _opened_login = $("#navbarToggleLogin").hasClass("collapse show");
+            if (_opened_login === true && !clickover.hasClass("toggler-login") &&
+                !clickover.parents().hasClass("collapse") &&
+                !clickover.parents().hasClass("btn-group-toggle")) {
+                $("#toggler-login").click();
+            }
 
-                var _opened_user = $("#navbarToggleUser").hasClass("collapse show");
-                if (_opened_user === true && !clickover.hasClass("toggler-user") &&
-                    !clickover.parents().hasClass("collapse") &&
-                    !clickover.parents().hasClass("btn-group-toggle")) {
-                    $("#toggler-user").click();
-                }
-            });
+            var _opened_user = $("#navbarToggleUser").hasClass("collapse show");
+            if (_opened_user === true && !clickover.hasClass("toggler-user") &&
+                !clickover.parents().hasClass("collapse") &&
+                !clickover.parents().hasClass("btn-group-toggle")) {
+                $("#toggler-user").click();
+            }
         });
+    });
     </script>
     <script type="text/javascript">
-        $(function(){
-	        $('#M5').css('background-image','url(../index/images/htopmenu3_10.jpg)');
-	        $('#M5').prop('href', 'javascript:void(0)');
-        });
+    $(function() {
+        $('#M5').css('background-image', 'url(../index/images/htopmenu3_10.jpg)');
+        $('#M5').prop('href', 'javascript:void(0)');
+    });
+
+    function getiContent(page) {
+        $('#iContent').prop('src', page);
+    }
     </script>
 </body>
 
