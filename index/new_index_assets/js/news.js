@@ -30,6 +30,9 @@ var app = new Vue({
         currentDateTime: function () {
             return dayjs(this.now).format('D MMMM YYYY, h:mm:ss a')
         },
+        commentUp: function () {
+            return this.newsGrad.concat(this.newsBachelor);
+        },
     },
     methods: {
         changeLanguage: function (lang) {

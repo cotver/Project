@@ -20,7 +20,7 @@ $group = $_GET['group'];
     <script src="new_index_assets/lib/th.js"></script>
     <script src="new_index_assets/lib/axios.min.js"></script>
     <script src="new_index_assets/lib/polyfill.min.js"></script>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Kanit&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="new_index_assets/css/master.css">
@@ -247,6 +247,31 @@ $group = $_GET['group'];
 
             <!-- Content -->
             <div class="reg-page">
+            <table width="100%" style="background: #c9c9c9;" border="0"  cellspacing="0" cellpadding="0" height="48">
+                    <tbody>
+                        <tr>
+                            <td width="245" height="4"></td>
+                            <td width="776"></td>
+                        </tr>
+                        <tr>
+                            <td height="27" style="text-align: center;font-size:25px; padding:10px;"><i class="icofont-newspaper "></i> ข่าว-ประกาศล่าสุด</td>
+                            <td>
+                                <div id="comment_update" style="display: block; padding:7px;" onmouseout="initNewsFeed();"
+                                    onmouseover="skipxNewsFeed();">
+                                    <ul id="ticker_04" class="ticker">
+                                        <li v-for="item in commentUp" style="display: list-item; ">
+                                            <a href="item.href" target="_self">
+                                                <font color="#FFFFFF" style="font-size:16px;">
+                                                    {{ t(item.textEN, item.textTH) }}
+                                                </font>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
                 <div class="reg-card-min-height" style="min-height:1050px;">
                     <div class="card-body con-margin">
                         <div class="card w-75 m-auto"style="background:#f89248;" >
@@ -391,6 +416,29 @@ $group = $_GET['group'];
     function getiContent(page) {
         $('#iContent').prop('src', page);
     }
+    </script>
+
+<script language="javascript">
+    var skipNewsFeed = 0;
+
+    function tick2() {
+        if (skipNewsFeed == 0)
+            $('#ticker_04 li:first').delay(3000).slideUp(function() {
+                $(this).appendTo($('#ticker_04')).slideDown();
+            });
+    }
+
+
+    function skipxNewsFeed() {
+        skipNewsFeed = 1;
+    }
+
+    function initNewsFeed() {
+        skipNewsFeed = 0;
+    }
+    setInterval(function() {
+        tick2()
+    }, 3500);
     </script>
 </body>
 

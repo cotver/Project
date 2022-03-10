@@ -20,7 +20,7 @@ $group = $_GET['group'];
     <script src="new_index_assets/lib/th.js"></script>
     <script src="new_index_assets/lib/axios.min.js"></script>
     <script src="new_index_assets/lib/polyfill.min.js"></script>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Kanit&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="new_index_assets/css/master.css">
@@ -223,7 +223,7 @@ $group = $_GET['group'];
                     <span v-for="item in navButtonsAll">
                         <a v-bind:href="item.url" id="item.textEN+'_menu_bar'"
                             :data-toggle="item.children ? 'dropdown' : ''" v-bind:target="item.target">
-                            <div class="btn reg-nav-button pl-2 pr-2 pt-2 pb-2 mb-1"  style="border:0px transparent;">
+                            <div class="btn reg-nav-button pl-2 pr-2 pt-2 pb-2 mb-1" style="border:0px transparent;">
                                 <i class="icofont-caret-right text-primary" v-show="!item.children"></i>
                                 <i class="icofont-caret-down text-primary" v-show="item.children"></i>
                                 {{ t(item.textEN, item.textTH) }}
@@ -237,22 +237,46 @@ $group = $_GET['group'];
                         </div>
                     </span>
                     <a href="../index" id="'_menu_bar'">
-                        <div class="btn reg-nav-button"  style="border:0px transparent; float: right;">
+                        <div class="btn reg-nav-button" style="border:0px transparent; float: right;">
                             <i class="icofont-home"></i>
                         </div>
                     </a>
                 </div>
             </div>
 
-
             <!-- Content -->
             <div class="reg-page">
+                <table width="100%" style="background: #c9c9c9;" border="0"  cellspacing="0" cellpadding="0" height="48">
+                    <tbody>
+                        <tr>
+                            <td width="245" height="4"></td>
+                            <td width="776"></td>
+                        </tr>
+                        <tr>
+                            <td height="27" style="text-align: center;font-size:25px; padding:10px;"><i class="icofont-newspaper "></i> ข่าว-ประกาศล่าสุด</td>
+                            <td>
+                                <div id="comment_update" style="display: block; padding:7px;" onmouseout="initNewsFeed();"
+                                    onmouseover="skipxNewsFeed();">
+                                    <ul id="ticker_04" class="ticker">
+                                        <li v-for="item in commentUp" style="display: list-item; ">
+                                            <a href="item.href" target="_self">
+                                                <font color="#FFFFFF" style="font-size:16px;">
+                                                    {{ t(item.textEN, item.textTH) }}
+                                                </font>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
                 <div class="reg-card-min-height" style="min-height:1050px;">
                     <div class="card-body con-margin">
-                        <div class="font-weight-bolder h5 m-4" style="display:flex; ">
+                        <div class="font-weight-bolder h5 ml-4" style="display:flex; ">
                             <img src="new_index_assets/img/logo/main.png" alt=""
                                 class="reg-height-title-kmitl-very-small ">
-                            
+
                             <div class="card-doc-head"><?php
                                 if($group==2 ){
                                     echo "{{ t('News','ประกาศระดับ') }}";
@@ -285,7 +309,7 @@ $group = $_GET['group'];
                                     echo '<div v-for="item in newsGrad" class="col mb-2">';
                                 }
                             ?>
-                            <a href=# class="card" v-on:click="setHit(item.date)">
+                            <a href="item.href" class="card" v-on:click="setHit(item.date)">
                                 <div class="card-body">
                                     <h5 class="card-title">{{ t(item.textEN, item.textTH) }}</h5>
                                     <i class="icofont-eye text-primary" style="float: left;;"> {{ item.views }}</i>
@@ -412,6 +436,29 @@ $group = $_GET['group'];
     function getiContent(page) {
         $('#iContent').prop('src', page);
     }
+    </script>
+
+    <script language="javascript">
+    var skipNewsFeed = 0;
+
+    function tick2() {
+        if (skipNewsFeed == 0)
+            $('#ticker_04 li:first').delay(3000).slideUp(function() {
+                $(this).appendTo($('#ticker_04')).slideDown();
+            });
+    }
+
+
+    function skipxNewsFeed() {
+        skipNewsFeed = 1;
+    }
+
+    function initNewsFeed() {
+        skipNewsFeed = 0;
+    }
+    setInterval(function() {
+        tick2()
+    }, 3500);
     </script>
 </body>
 
