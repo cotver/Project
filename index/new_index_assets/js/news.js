@@ -47,10 +47,8 @@ var app = new Vue({
                 });
         },
         setHit: function (date) {
-            console.log(date);
             axios.post('news_api.php?function=set-hit&date=' + date)
                 .then(function (response) {
-                    console.log(response);
                     return response;
                 })
                 .catch(function (error) {
@@ -98,7 +96,6 @@ var app = new Vue({
             .then(function (response) {
                 if (response.data) {
                     self.newsGrad = response.data.map(function (item) {
-                        console.log(item);
                         return {
                             textTH: get_plain_text(item.topic),
                             textEN: get_plain_text(item.topic_en),
@@ -199,7 +196,6 @@ var app = new Vue({
             }
         })
             .then(function (response) {
-                console.log(response);
                 if (response.data) {
                     self.language = response.data.lang;
                 }

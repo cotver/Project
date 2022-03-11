@@ -56,6 +56,36 @@ var app = new Vue({
                     alert(JSON.stringify(error.response.data.message))
                 });
         },
+        submit_post: function (obj) {
+            $(obj).prop('disabled', true);
+            var topic = $.trim($('#topic').val());
+            var icon = $.trim($("input[type='radio']:checked").val());
+            var detail = $.trim($('#detail').val());
+            if (topic.length < 3 || detail.length < 3) {
+                alert('กรอกข้อมูลให้ครบถ้วนด้วย+++');
+                $(obj).prop('disabled', false);
+            } else {
+                var email = $.trim($('#email').val());
+                $('#bt_post').html('<img src="../images/spinner.gif" width="16" height="16" />');
+                axios.post('webboard_api.php?function=submit_post&date=' + date + '&topic=' + topic + '&detail=' + detail, {
+                })
+                //$.post("webboard_ajax.php", {
+                //    'group_id': $('#group_id').val(),
+                //    'icon': icon,
+                //    'topic': topic,
+                //    'detail': detail,
+                //    'announcer': announcer,
+                //    'email': email
+                //}, function(data) {
+                //    if (data != "") {
+                //        $(".wb_header:first").after(data);
+                //        MClose();
+                //    } else {
+                //        MBox('ไม่สามารถบันทึกข้อมูลได้ กรุณาลองใหม่ !!!');
+                //    }
+                //});
+            }
+        },
         t: function (eng, th) {
             return this.language === 'en' ? eng : th;
         }
@@ -138,28 +168,28 @@ var app = new Vue({
                 alert(JSON.stringify(error.response.data.message))
             });
 
-            axios.get('webboard_api.php', {
-                params: {
-                    function: 'get-news',
-                    group: 1,
+        axios.get('webboard_api.php', {
+            params: {
+                function: 'get-news',
+                group: 1,
+            }
+        })
+            .then(function (response) {
+                if (response.data) {
+                    self.announce = response.data.map(function (item) {
+                        return {
+                            textTH: get_plain_text(item.topic),
+                            textEN: get_plain_text(item.topic_en),
+                            url: item.detail,
+                            views: item.views,
+                            date: item.date,
+                        }
+                    });
                 }
             })
-                .then(function (response) {
-                    if (response.data) {
-                        self.announce = response.data.map(function (item) {
-                            return {
-                                textTH: get_plain_text(item.topic),
-                                textEN: get_plain_text(item.topic_en),
-                                url: item.detail,
-                                views: item.views,
-                                date: item.date,
-                            }
-                        });
-                    }
-                })
-                .catch(function (error) {
-                    alert(JSON.stringify(error.response.data.message))
-                });
+            .catch(function (error) {
+                alert(JSON.stringify(error.response.data.message))
+            });
 
         // --------------------------
         // info
@@ -204,34 +234,32 @@ var app = new Vue({
             .catch(function (error) {
                 alert(JSON.stringify(error.response.data.message))
             });
-            
-            // --------------------------
-            // post
-            axios.get('webboard_api.php', {
-                params: {
-                    function: 'get-post',
-                    group: 1,
+
+        // --------------------------
+        // post
+        axios.get('webboard_api.php', {
+            params: {
+                function: 'get-post',
+                group: 1,
+            }
+        })
+            .then(function (response) {
+                if (response.data) {
+                    self.postAll = response.data.map(function (item) {
+                        return {
+                            topic: get_plain_text(item.topic),
+                            detail: item.detail,
+                            url: item.href,
+                            views: item.views,
+                            date: item.date,
+                            count: item.count,
+                            commentDate: item.maxDate,
+                        }
+                    });
                 }
             })
-                .then(function (response) {
-                    if (response.data) {
-                        console.log(response);
-                        self.postAll = response.data.map(function (item) {
-                            console.log(item);
-                            return {
-                                topic: get_plain_text(item.topic),
-                                detail: item.detail,
-                                url: item.href,
-                                views: item.views,
-                                date: item.date,
-                                count: item.count,
-                                commentDate: item.maxDate,
-                            }        
-                        });
-                    }
-                })
-                .catch(function (error) {
-                    alert(JSON.stringify(error.response.data.message))
-                });
+            .catch(function (error) {
+                alert(JSON.stringify(error.response.data.message))
+            });
     }
 })

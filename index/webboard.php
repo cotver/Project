@@ -29,6 +29,64 @@ $group = $_GET['group'];
     <meta name="description" content="ระบบสารสนเทศ สำนักทะเบียนและประมวลผล สถาบันเทคโนโลยีพระจอมเกล้าคุณทหารลาดกระบัง
     - Information System, Office of the Registrar, King Mongkut's Institute of Technology Ladkrabang">
     <title>สำนักทะเบียนและประมวลผล สถาบันเทคโนโลยีพระจอมเกล้าคุณทหารลาดกระบัง</title>
+    <style>
+    /* The popup form - hidden by default */
+    .form-popup {
+        display: none;
+        margin: auto;
+        width: 50%;
+        border: 3px solid #f1f1f1;
+        z-index: 9;
+    }
+
+    /* Add styles to the form container */
+    .form-container {
+
+        max-width: 100%;
+        padding: 10px;
+        background-color: white;
+    }
+
+    /* Full-width input fields */
+    .form-container input[type=text],
+    .form-container input[type=password] {
+        width: 100%;
+        padding: 15px;
+        margin: 5px 0 22px 0;
+        border: none;
+        background: #f1f1f1;
+    }
+
+    /* When the inputs get focus, do something */
+    .form-container input[type=text]:focus,
+    .form-container input[type=password]:focus {
+        background-color: #ddd;
+        outline: none;
+    }
+
+    /* Set a style for the submit/login button */
+    .form-container .btn {
+        background-color: #04AA6D;
+        color: white;
+        padding: 16px 20px;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+        margin-bottom: 10px;
+        opacity: 0.8;
+    }
+
+    /* Add a red background color to the cancel button */
+    .form-container .cancel {
+        background-color: red;
+    }
+
+    /* Add some hover effects to buttons */
+    .form-container .btn:hover,
+    .open-button:hover {
+        opacity: 1;
+    }
+    </style>
 </head>
 
 <body>
@@ -247,17 +305,18 @@ $group = $_GET['group'];
 
             <!-- Content -->
             <div class="reg-page">
-            <table width="100%" style="background: #c9c9c9;" border="0"  cellspacing="0" cellpadding="0" height="48">
+                <table width="100%" style="background: #c9c9c9;" border="0" cellspacing="0" cellpadding="0" height="48">
                     <tbody>
                         <tr>
                             <td width="245" height="4"></td>
                             <td width="776"></td>
                         </tr>
                         <tr>
-                            <td height="27" style="text-align: center;font-size:25px; padding:10px;"><i class="icofont-newspaper "></i> ข่าว-ประกาศล่าสุด</td>
+                            <td height="27" style="text-align: center;font-size:25px; padding:10px;"><i
+                                    class="icofont-newspaper "></i> ข่าว-ประกาศล่าสุด</td>
                             <td>
-                                <div id="comment_update" style="display: block; padding:7px;" onmouseout="initNewsFeed();"
-                                    onmouseover="skipxNewsFeed();">
+                                <div id="comment_update" style="display: block; padding:7px;"
+                                    onmouseout="initNewsFeed();" onmouseover="skipxNewsFeed();">
                                     <ul id="ticker_04" class="ticker">
                                         <li v-for="item in commentUp" style="display: list-item; ">
                                             <a href="item.href" target="_self">
@@ -272,9 +331,35 @@ $group = $_GET['group'];
                         </tr>
                     </tbody>
                 </table>
+                <div style="margin:20px;display:block;">
+                    <a href="#" style="float:right;" target="_blank">
+                        <div class="btn d-button">กระทู้ของ นศ.</div>
+                    </a>
+                    <a href="#" onclick="openForm()" style="float:right;">
+                        <div class="btn d-button">ตั้งกระทู้ใหม่</div>
+                    </a>
+                    <form class="form-popup" id="myForm">
+                        <div class="form-container">
+                            <label for="topic"><b>หัวข้อ :</b></label>
+                            <input type="text" id="topic" placeholder="Enter Topic" name="topic" required>
+                            <label for="detail"><b>รายละเอียด :</b></label>
+                            <textarea style="width: 100%; height: 215px;" cols="80" rows="5" type="text" id="detail"
+                                placeholder="Enter Detail" name="detail" required></textarea>
+                            <label for="email"><b>อีเมล์ :</b></label>
+                            <input type="text" id="email" placeholder="Enter Email" name="email" required>
+
+
+                            <button v-on:click="submit_post(this)" class="btn">บันทึก</button>
+                            <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+                        </div>
+                    </form>
+                    <p style="color:red;">***โปรดล็อคอินเพื่อตั้งกระทู้***</p>
+
+                </div>
+
                 <div class="reg-card-min-height" style="min-height:1050px;">
                     <div class="card-body con-margin">
-                        <div class="card w-75 m-auto"style="background:#f89248;" >
+                        <div class="card w-75 m-auto" style="background:#f89248;">
                             <div class="font-weight-bolder h5 m-4" style="display:flex;margin:10px !important; ">
 
                                 <img src="new_index_assets/img/logo/main.png" alt=""
@@ -296,7 +381,7 @@ $group = $_GET['group'];
                                 <i style="float: right;">วันที่ตอบล่าสุด {{ item.commentDate }}</i>
                             </a>
                         </div>
-                        
+
                     </div>
                 </div>
             </div>
@@ -418,7 +503,7 @@ $group = $_GET['group'];
     }
     </script>
 
-<script language="javascript">
+    <script language="javascript">
     var skipNewsFeed = 0;
 
     function tick2() {
@@ -440,6 +525,17 @@ $group = $_GET['group'];
         tick2()
     }, 3500);
     </script>
+    <script>
+    function openForm() {
+        document.getElementById("myForm").style.display = "block";
+    }
+
+    function closeForm() {
+        document.getElementById("myForm").style.display = "none";
+    }
+    </script>
+
+
 </body>
 
 </html>

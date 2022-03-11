@@ -29,6 +29,8 @@ if (REQUEST_METHOD == 'GET') {
             break;
         case 'set-hit':
             $response = setHit();
+        case 'submit_post':
+            $response = submitPost();
         default:
             error('Bad Request', 400);
     }
@@ -232,4 +234,26 @@ function setHit()
     $result = mysqli_query($rcon, $sql) or error(mysqli_error($rcon));
     
     return $result;
+}
+function submitPost(){
+
+    $response = array();
+
+    $rcon = replicateConnection();
+    
+    if (!isset($_REQUEST['date']))
+        error('[date] Required', 400);
+    if (!isset($_REQUEST['topic']))
+        error('[topic] Required', 400);
+    if (!isset($_REQUEST['detail']))
+        error('[detail] Required', 400);
+
+    $topic = mysqli_real_escape_string($rcon, $_REQUEST['topic']);
+    $detail = mysqli_real_escape_string($rcon, $_REQUEST['detail']);
+    $date = mysqli_real_escape_string($rcon, $_REQUEST['date']);
+
+    $sql = "INSERT INTO `registrar`.`_post_`(`topic`, `detail`, `date`, `group`) VALUES ('$topic','$detail','$date',1)";
+    $result = mysqli_query($rcon, $sql) or error(mysqli_error($rcon));
+    
+    return $result.$topic.$detail.$date;
 }
