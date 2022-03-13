@@ -141,7 +141,7 @@ function getNews()
     $group = mysqli_real_escape_string($rcon, $_REQUEST['group']);
     if ($group == 2)
         $group = '2, 23';
-    $sql = "SELECT `date`, `topic`, `topic_en`, `detail`, `link`, `pin`, `publish_date`, `expire_date`, `group`, `views` FROM `registrar`.`_news_` WHERE `group` IN ($group) AND `status` = 1 ORDER BY `pin` DESC, `date` DESC";
+    $sql = "SELECT `date`, `topic`, `topic_en`, `detail`, `link`, `pin`, `publish_date`, `expire_date`, `group`, `views` FROM `it61070069_registrar`.`_news_` WHERE `group` IN ($group) AND `status` = 1 ORDER BY `pin` DESC, `date` DESC";
 
     $result = mysqli_query($rcon, $sql) or error(mysqli_error($rcon));
     if (mysqli_num_rows($result) > 0) {
@@ -205,7 +205,7 @@ function getPost()
     $group = mysqli_real_escape_string($rcon, $_REQUEST['group']);
     if ($group == 2)
         $group = '2, 23';
-    $sql = "SELECT `date`, `topic`, `detail`, `pin`, `group`, `views`, (SELECT count(*) FROM `registrar`.`_comment_` c WHERE c.post_date = p.date) `count`, (SELECT max(date) FROM `registrar`.`_comment_` c WHERE c.post_date = p.date) `maxDate` FROM `registrar`.`_post_` p WHERE `group` IN ($group) ORDER BY `pin` DESC, `date` DESC";
+    $sql = "SELECT `date`, `topic`, `detail`, `pin`, `group`, `views`, (SELECT count(*) FROM `it61070069_registrar`.`_comment_` c WHERE c.post_date = p.date) `count`, (SELECT max(date) FROM `it61070069_registrar`.`_comment_` c WHERE c.post_date = p.date) `maxDate` FROM `it61070069_registrar`.`_post_` p WHERE `group` IN ($group) ORDER BY `pin` DESC, `date` DESC";
 
     $result = mysqli_query($rcon, $sql) or error(mysqli_error($rcon));
     if (mysqli_num_rows($result) > 0) {
@@ -230,7 +230,7 @@ function setHit()
         error('[date] Required', 400);
 
     $date = mysqli_real_escape_string($rcon, $_REQUEST['date']);
-    $sql = "UPDATE `registrar`.`_post_` SET `views`=`views`+1 WHERE `date` = '$date'";
+    $sql = "UPDATE `it61070069_registrar`.`_post_` SET `views`=`views`+1 WHERE `date` = '$date'";
     $result = mysqli_query($rcon, $sql) or error(mysqli_error($rcon));
     
     return $result;
@@ -252,7 +252,7 @@ function submitPost(){
     $detail = mysqli_real_escape_string($rcon, $_REQUEST['detail']);
     $date = mysqli_real_escape_string($rcon, $_REQUEST['date']);
 
-    $sql = "INSERT INTO `registrar`.`_post_`(`topic`, `detail`, `date`, `group`) VALUES ('$topic','$detail','$date',1)";
+    $sql = "INSERT INTO `it61070069_registrar`.`_post_`(`topic`, `detail`, `date`, `group`) VALUES ('$topic','$detail','$date',1)";
     $result = mysqli_query($rcon, $sql) or error(mysqli_error($rcon));
     
     return $result.$topic.$detail.$date;

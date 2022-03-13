@@ -14,8 +14,8 @@ function error() {
 
 function replicateConnection() {
     $servername = "localhost";
-    $username = "root";
-    $password = "";
+    $username = "it61070069_registrar";
+    $password = "12345";
     return new mysqli($servername, $username, $password);
 }
 ?>

@@ -136,7 +136,7 @@ function getNews()
     $group = mysqli_real_escape_string($rcon, $_REQUEST['group']);
     if ($group == 2)
         $group = '2, 23';
-    $sql = "SELECT `date`, `topic`, `topic_en`, `detail`, `link`, `pin`, `publish_date`, `expire_date`, `group`, `views` FROM `registrar`.`_news_` WHERE `group` IN ($group) AND `status` = 1 ORDER BY `pin` DESC, `date` DESC";
+    $sql = "SELECT `date`, `topic`, `topic_en`, `detail`, `link`, `pin`, `publish_date`, `expire_date`, `group`, `views` FROM `it61070069_registrar`.`_news_` WHERE `group` IN ($group) AND `status` = 1 ORDER BY `pin` DESC, `date` DESC";
 
     $result = mysqli_query($rcon, $sql) or error(mysqli_error($rcon));
     if (mysqli_num_rows($result) > 0) {
@@ -197,9 +197,7 @@ function setHit()
         error('[date] Required', 400);
 
     $date = mysqli_real_escape_string($rcon, $_REQUEST['date']);
-    
-    $sql = "UPDATE `registrar`.`_news_` SET `views`=`views`+1 WHERE `date` = '$date'";
-
+    $sql = "UPDATE `it61070069_registrar`.`_news_` SET `views`=`views`+1 WHERE `date` = '$date'";
     $result = mysqli_query($rcon, $sql) or error(mysqli_error($rcon));
     
     return $result;

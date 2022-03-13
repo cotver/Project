@@ -134,7 +134,7 @@ function getNews()
     $group = mysqli_real_escape_string($rcon, $_REQUEST['group']);
     if ($group == 2)
         $group = '2, 23';
-    $sql = "SELECT `date`, `topic`, `topic_en`, `detail`, `link`, `pin`, `publish_date`, `expire_date`, `group` FROM `registrar`.`_news_` WHERE `group` IN ($group) AND `status` = 1 ORDER BY `pin` DESC, `date` DESC";
+    $sql = "SELECT `date`, `topic`, `topic_en`, `detail`, `link`, `pin`, `publish_date`, `expire_date`, `group` FROM `it61070069_registrar`.`_news_` WHERE `group` IN ($group) AND `status` = 1 ORDER BY `pin` DESC, `date` DESC";
 
     $result = mysqli_query($rcon, $sql) or error(mysqli_error($rcon));
     if (mysqli_num_rows($result) > 0) {
