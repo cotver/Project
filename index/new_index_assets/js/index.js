@@ -78,6 +78,7 @@ var app = new Vue({
             }
         })
             .then(function (response) {
+                console.log(response);
                 if (response.data) {
                     self.newsBachelor = response.data.map(function (item) {
                         return {
@@ -102,6 +103,7 @@ var app = new Vue({
             }
         })
             .then(function (response) {
+                console.log(response);
                 if (response.data) {
                     self.newsGrad = response.data.map(function (item) {
                         return {
@@ -127,6 +129,7 @@ var app = new Vue({
             }
         })
             .then(function (response) {
+                console.log(response);
                 if (response.data) {
                     self.announceNow = response.data.map(function (item) {
                         return {

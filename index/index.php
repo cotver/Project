@@ -271,7 +271,7 @@ switch ($_SERVER['SERVER_ADDR']) {
                 <!-- <video width="100%" id="bannervid" autoplay="autoplay" muted="" loop="">
                     <source src="banner.mp4" type="video/mp4">
                 </video> -->
-                <img src="new_index_assets/img/cover_hospital.jpg" style="width: 100%;">
+                <!-- <img src="new_index_assets/img/cover_hospital.jpg" style="width: 100%;">-->
             </div>
             <!-- ---------------------------------------------------------- -->
 
@@ -429,9 +429,9 @@ switch ($_SERVER['SERVER_ADDR']) {
                     </button>
                 </div>
                 <div class="modal-body">
-                    <img src="new_index_assets/img/modal/17122020th.jpg" alt="" style="width: 100%;">
+                    <!-- <img src="new_index_assets/img/modal/17122020th.jpg" alt="" style="width: 100%;">
                     <hr>
-                    <img src="new_index_assets/img/modal/17122020en.jpg" alt="" style="width: 100%;">
+                    <img src="new_index_assets/img/modal/17122020en.jpg" alt="" style="width: 100%;">-->
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -440,7 +440,7 @@ switch ($_SERVER['SERVER_ADDR']) {
         </div>
     </div>
 
-    <div><? require_once("../test/searchTest.php"); ?></div>
+
 
     <script src="new_index_assets/js/index.js?v=1.7"></script>
     <script>

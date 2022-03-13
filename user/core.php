@@ -16,6 +16,8 @@ function replicateConnection() {
     $servername = "localhost";
     $username = "it61070069_registrar";
     $password = "12345";
-    return new mysqli($servername, $username, $password);
+    $rcon= new mysqli($servername, $username, $password);
+    mysqli_query($rcon,"set character set utf8");
+    return $rcon;
 }
 ?>

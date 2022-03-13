@@ -127,7 +127,8 @@ function getNews()
     $response = array();
 
     $rcon = replicateConnection();
-
+    $result =mysqli_query($rcon,"set character set utf8");
+    setlocale(LC_ALL, 'th_TH.utf-8');
     if (!isset($_REQUEST['group']))
         error('[group] Required', 400);
     else if (!ctype_digit((string) $_REQUEST['group']))
@@ -192,13 +193,11 @@ function setHit()
     $response = array();
 
     $rcon = replicateConnection();
-    
     if (!isset($_REQUEST['date']))
         error('[date] Required', 400);
 
     $date = mysqli_real_escape_string($rcon, $_REQUEST['date']);
     $sql = "UPDATE `it61070069_registrar`.`_news_` SET `views`=`views`+1 WHERE `date` = '$date'";
     $result = mysqli_query($rcon, $sql) or error(mysqli_error($rcon));
-    
     return $result;
 }
