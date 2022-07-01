@@ -251,7 +251,7 @@ header("Content-type: text/html; charset=UTF-8");
                         </a>
                         <a href="https://new.reg.kmitl.ac.th/admission/" class="btn btn-lightgrey text-left side-df m-auto">
                             <i class="icofont-circled-right text-primary h5 m-auto"></i>
-                            <span class="h4 pl-2 m-auto p-sm-3"><p>ระดับบัณพิตศึกษา</p><p class="mb-0">Graduate</p></span>
+                            <span class="h4 pl-2 m-auto p-sm-3"><p>ระดับบัณฑิตศึกษา</p><p class="mb-0">Graduate</p></span>
                         </a>
                     </div>
                 </div>

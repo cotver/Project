@@ -246,17 +246,18 @@ $group = $_GET['group'];
 
             <!-- Content -->
             <div class="reg-page">
-                <table width="100%" style="background: #c9c9c9;" border="0"  cellspacing="0" cellpadding="0" height="48">
+                <table width="100%" style="background: #c9c9c9;" border="0" cellspacing="0" cellpadding="0" height="48">
                     <tbody>
                         <tr>
                             <td width="245" height="4"></td>
                             <td width="776"></td>
                         </tr>
                         <tr>
-                            <td height="27" style="text-align: center;font-size:25px; padding:10px;"><i class="icofont-newspaper "></i> ข่าว-ประกาศล่าสุด</td>
+                            <td height="27" style="text-align: center;font-size:25px; padding:10px;"><i
+                                    class="icofont-newspaper "></i> ข่าว-ประกาศล่าสุด</td>
                             <td>
-                                <div id="comment_update" style="display: block; padding:7px;" onmouseout="initNewsFeed();"
-                                    onmouseover="skipxNewsFeed();">
+                                <div id="comment_update" style="display: block; padding:7px;"
+                                    onmouseout="initNewsFeed();" onmouseover="skipxNewsFeed();">
                                     <ul id="ticker_04" class="ticker">
                                         <li v-for="item in commentUp" style="display: list-item; ">
                                             <a href="item.href" target="_self">
@@ -302,16 +303,22 @@ $group = $_GET['group'];
                         <div class="row row-cols-2 row-cols-md-4">
                             <?php
                                 if($group==2 ){
-                                    echo '<div v-for="item in newsBachelor" class="col mb-2">';
+                                    echo '<div v-for="(item, index) in newsBachelor" class="col mb-2">';
                                 } elseif($group==1 ){
-                                    echo '<div v-for="item in announce" class="col mb-2">';
+                                    echo '<div v-for="(item, index) in announce" class="col mb-2">';
                                 } elseif($group==4 ){
-                                    echo '<div v-for="item in newsGrad" class="col mb-2">';
+                                    echo '<div v-for="(item, index) in newsGrad" class="col mb-2">';
                                 }
                             ?>
                             <a href="item.href" class="card" v-on:click="setHit(item.date)">
                                 <div class="card-body">
-                                    <h5 class="card-title">{{ t(item.textEN, item.textTH) }}</h5>
+
+                                    <h5 class="card-title">
+                                        <div id='newItem' v-if="index == 0" style=" display:inline-block">
+                                            NEW
+                                        </div>
+                                        {{ t(item.textEN, item.textTH) }}
+                                    </h5>
                                     <i class="icofont-eye text-primary" style="float: left;;"> {{ item.views }}</i>
                                     <i style="float: right;">{{ item.date }}</i>
                                 </div>
@@ -459,6 +466,13 @@ $group = $_GET['group'];
     setInterval(function() {
         tick2()
     }, 3500);
+    var nc = 0;
+    setInterval(function changebackground() {
+        var doc = document.getElementById("newItem");
+        var color = ["black", "blue", 'pink', "brown", "green", "yellow", "red", 'purple'];
+        doc.style.color = color[nc % 8];
+        nc = nc + 1;
+    }, 500);
     </script>
 </body>
 

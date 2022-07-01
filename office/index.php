@@ -252,7 +252,7 @@ header("Content-type: text/html; charset=UTF-8");
                     <div class="card m-3">
                         <div class="card-header text-dark bg-white font-weight-bolder bg-line-3 h4 side-df">
                             <i class="icofont-caret-down text-primary side-icon"></i>
-                            <span class="side-text">{{ t('Curriculum', 'หลักสูตรสถาบันฯ') }}</span>
+                            <span class="side-text">{{ t('About the Office of the Registrar', 'ข้อมูลสำนักฯ') }}</span>
                         </div>
                         <div class="card-body">
                             <div v-for="item in aboutMenu" class="btn-tran">

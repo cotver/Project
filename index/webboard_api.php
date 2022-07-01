@@ -205,7 +205,7 @@ function getPost()
     $group = mysqli_real_escape_string($rcon, $_REQUEST['group']);
     if ($group == 2)
         $group = '2, 23';
-    $sql = "SELECT `date`, `topic`, `detail`, `pin`, `group`, `views`, (SELECT count(*) FROM `it61070069_registrar`.`_comment_` c WHERE c.post_date = p.date) `count`, (SELECT max(date) FROM `it61070069_registrar`.`_comment_` c WHERE c.post_date = p.date) `maxDate` FROM `it61070069_registrar`.`_post_` p WHERE `group` IN ($group) ORDER BY `pin` DESC, `date` DESC";
+    $sql = "SELECT `date`, `topic`, `detail`, `pin`, `group`, `views`, (SELECT count(*) FROM `it61070069_registrar`.`_comment_` c WHERE c.post_date = p.date) `count`, (SELECT max(date) FROM `it61070069_registrar`.`_comment_` c WHERE c.post_date = p.date) `maxDate` FROM `it61070069_registrar`.`_post_` p WHERE `group` IN ($group) ORDER BY `pin` DESC, `date` ASC";
 
     $result = mysqli_query($rcon, $sql) or error(mysqli_error($rcon));
     if (mysqli_num_rows($result) > 0) {

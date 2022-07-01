@@ -86,7 +86,28 @@ $group = $_GET['group'];
     .open-button:hover {
         opacity: 1;
     }
+
+    .red {
+        color: red;
+        -webkit-text-stroke-color: black;
+    }
+
+    .black {
+        color: black;
+        -webkit-text-stroke-color: white;
+    }
+
+    .blue {
+        color: blue;
+        -webkit-text-stroke-color: white;
+    }
+
+    .green {
+        color: green;
+        -webkit-text-stroke-color: white;
+    }
     </style>
+
 </head>
 
 <body>
@@ -373,9 +394,14 @@ $group = $_GET['group'];
                                 </div>
                             </div>
                         </div>
-                        <div v-for="item in postAll" class="card w-75 m-auto">
+                        <div v-for="(item,index) in postAll" class="card w-75 m-auto">
                             <a v-bind:href='item.url' v-on:click="setHit(item.date)" class="card-body">
-                                <h5 class="card-title">{{ item.topic }}</h5>
+                                <h5 class="card-title">
+                                    <div id='newItem' v-if="index == 0" style=" display:inline-block">
+                                        NEW
+                                    </div>
+                                    {{ item.topic }}
+                                </h5>
                                 <i class="icofont-eye text-primary m-1" style="float: left;"> {{ item.views }} </i>
                                 <i class="icofont-comment text-primary m-1" style="float: left;"> {{ item.count }} </i>
                                 <i style="float: right;">วันที่ตอบล่าสุด {{ item.commentDate }}</i>
@@ -533,6 +559,22 @@ $group = $_GET['group'];
     function closeForm() {
         document.getElementById("myForm").style.display = "none";
     }
+
+    function change(i) {
+        var i = 0;
+        var doc = document.getElementById("newItem");
+        var color = ["black", "blue", "brown", "green"];
+        doc.style.color = color[i % 4];
+        i = i++;
+    }
+
+    var nc = 0;
+    setInterval(function changebackground() {
+        var doc = document.getElementById("newItem");
+        var color = ["black", "blue",'pink', "brown", "green", "yellow", "red",'purple'];
+        doc.style.color = color[nc % 8];
+        nc = nc+1;
+    }, 500);
     </script>
 
 
